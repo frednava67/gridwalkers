@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Multi-player Gridwalking</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Latest compiled and minified CSS -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        />
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script src="helper.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container-fluid">
+            <br />
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div09" class="gridbox"></div>
+                    <div id="div19" class="gridbox"></div>
+                    <div id="div29" class="gridbox"></div>
+                    <div id="div39" class="gridbox"></div>
+                    <div id="div49" class="gridbox"></div>
+                    <div id="div59" class="gridbox"></div>
+                    <div id="div69" class="gridbox"></div>
+                    <div id="div79" class="gridbox"></div>
+                    <div id="div89" class="gridbox"></div>
+                    <div id="div99" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div08" class="gridbox"></div>
+                    <div id="div18" class="gridbox"></div>
+                    <div id="div28" class="gridbox"></div>
+                    <div id="div38" class="gridbox"></div>
+                    <div id="div48" class="gridbox"></div>
+                    <div id="div58" class="gridbox"></div>
+                    <div id="div68" class="gridbox"></div>
+                    <div id="div78" class="gridbox"></div>
+                    <div id="div88" class="gridbox"></div>
+                    <div id="div98" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div07" class="gridbox"></div>
+                    <div id="div17" class="gridbox"></div>
+                    <div id="div27" class="gridbox"></div>
+                    <div id="div37" class="gridbox"></div>
+                    <div id="div47" class="gridbox"></div>
+                    <div id="div57" class="gridbox"></div>
+                    <div id="div67" class="gridbox"></div>
+                    <div id="div77" class="gridbox"></div>
+                    <div id="div87" class="gridbox"></div>
+                    <div id="div97" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div06" class="gridbox"></div>
+                    <div id="div16" class="gridbox"></div>
+                    <div id="div26" class="gridbox"></div>
+                    <div id="div36" class="gridbox"></div>
+                    <div id="div46" class="gridbox"></div>
+                    <div id="div56" class="gridbox"></div>
+                    <div id="div66" class="gridbox"></div>
+                    <div id="div76" class="gridbox"></div>
+                    <div id="div86" class="gridbox"></div>
+                    <div id="div96" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div05" class="gridbox"></div>
+                    <div id="div15" class="gridbox"></div>
+                    <div id="div25" class="gridbox"></div>
+                    <div id="div35" class="gridbox"></div>
+                    <div id="div45" class="gridbox"></div>
+                    <div id="div55" class="gridbox"></div>
+                    <div id="div65" class="gridbox"></div>
+                    <div id="div75" class="gridbox"></div>
+                    <div id="div85" class="gridbox"></div>
+                    <div id="div95" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div04" class="gridbox"></div>
+                    <div id="div14" class="gridbox"></div>
+                    <div id="div24" class="gridbox"></div>
+                    <div id="div34" class="gridbox"></div>
+                    <div id="div44" class="gridbox"></div>
+                    <div id="div54" class="gridbox"></div>
+                    <div id="div64" class="gridbox"></div>
+                    <div id="div74" class="gridbox"></div>
+                    <div id="div84" class="gridbox"></div>
+                    <div id="div94" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div03" class="gridbox"></div>
+                    <div id="div13" class="gridbox"></div>
+                    <div id="div23" class="gridbox"></div>
+                    <div id="div33" class="gridbox"></div>
+                    <div id="div43" class="gridbox"></div>
+                    <div id="div53" class="gridbox"></div>
+                    <div id="div63" class="gridbox"></div>
+                    <div id="div73" class="gridbox"></div>
+                    <div id="div83" class="gridbox"></div>
+                    <div id="div93" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8"> 
+                <div id="griddiv">
+                    <div id="div02" class="gridbox"></div>
+                    <div id="div12" class="gridbox"></div>
+                    <div id="div22" class="gridbox"></div>
+                    <div id="div32" class="gridbox"></div>
+                    <div id="div42" class="gridbox"></div>
+                    <div id="div52" class="gridbox"></div>
+                    <div id="div62" class="gridbox"></div>
+                    <div id="div72" class="gridbox"></div>
+                    <div id="div82" class="gridbox"></div>
+                    <div id="div92" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div01" class="gridbox"></div>
+                    <div id="div11" class="gridbox"></div>
+                    <div id="div21" class="gridbox"></div>
+                    <div id="div31" class="gridbox"></div>
+                    <div id="div41" class="gridbox"></div>
+                    <div id="div51" class="gridbox"></div>
+                    <div id="div61" class="gridbox"></div>
+                    <div id="div71" class="gridbox"></div>
+                    <div id="div81" class="gridbox"></div>
+                    <div id="div91" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div id="griddiv">
+                    <div id="div00" class="gridbox"></div>
+                    <div id="div10" class="gridbox"></div>
+                    <div id="div20" class="gridbox"></div>
+                    <div id="div30" class="gridbox"></div>
+                    <div id="div40" class="gridbox"></div>
+                    <div id="div50" class="gridbox"></div>
+                    <div id="div60" class="gridbox"></div>
+                    <div id="div70" class="gridbox"></div>
+                    <div id="div80" class="gridbox"></div>
+                    <div id="div90" class="gridbox"></div>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                <div class="row d-flex justify-content-center">
+                        <div class="blankbox"></div>
+                        <div id="moveup" class="gridbox d-flex justify-content-center">UP</div>
+                        <div class="blankbox"></div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                        <div id="moveleft" class="gridbox">RIGHT</div>
+                        <div  class="blankbox"></div>
+                        <div id="moveright" class="gridbox d-flex justify-content-center">LEFT</div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                        <div  class="blankbox"></div>
+                        <div id="movedown" class="gridbox d-flex justify-content-center">DOWN</div>
+                        <div  class="blankbox"></div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"></div>
+        </div>
+    </body>
+</html>
