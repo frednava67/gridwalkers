@@ -18,6 +18,34 @@ function resetGrid() {
     }
 }
 
+function moveUp(){
+    if(selfy < 9) {
+        selfy++;
+    }
+    return {x: selfx, y: selfy};
+}
+
+function moveDown(){
+    if(selfy > 0) {
+        selfy--;
+    }
+    return {x: selfx, y: selfy};
+}
+
+function moveRight() {
+    if(selfx < 9) {
+        selfx++;
+    }
+    return {x: selfx, y: selfy};    
+}
+
+function moveLeft() {
+    if(selfx > 0) {
+        selfx--;
+    }
+    return {x: selfx, y: selfy};
+}
+
 $(document).ready(function (){
     var socket = io();
 
@@ -43,34 +71,42 @@ $(document).ready(function (){
     });
 
     $("#moveup").click(function(){
-        if(selfy < 9) {
-            selfy++;
-        }
-        move = {x: selfx, y: selfy};
+        move = moveUp();
         socket.emit('playermove', move);
     });
     $("#movedown").click(function(){
-        if(selfy > 0) {
-            selfy--;
-        }
-        move = {x: selfx, y: selfy};
+        move = moveDown();
         socket.emit('playermove', move);
     });
     $("#moveright").click(function(){
-        if(selfx < 9) {
-            selfx++;
-        }
-        move = {x: selfx, y: selfy};
+        move = moveRight();
         socket.emit('playermove', move);
     });
     $("#moveleft").click(function(){
-        if(selfx > 0) {
-            selfx--;
-        }
-        move = {x: selfx, y: selfy};
+        move = moveLeft();
         socket.emit('playermove', move);
     });
 
+    $("body").keyup(function (key) {
+        switch(key.which) {
+            case 38: //UP
+                move = moveUp();
+                socket.emit('playermove', move);
+            break;
 
+            case 39: //RIGHT
+                move = moveRight();
+                socket.emit('playermove', move);
+            break;
+            case 40: //DOWN
+                move = moveDown();
+                socket.emit('playermove', move);
+            break;
+            case 37: //LEFT
+                move = moveLeft();
+                socket.emit('playermove', move);
+            break;
+        }
+    });
 
 });
