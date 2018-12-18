@@ -56,16 +56,29 @@ $(document).ready(function (){
 
     socket.on('updategrid', function (data) {
         let idkeys  = Object.keys(data.hash)
+        let collision = false;
         resetGrid();
+        console.log('-----------------------------------');
         for (x=0;x< idkeys.length;x++) {
             if (data.hash[idkeys[x]].id == socketid) {
                 selfx = data.hash[idkeys[x]].x;
-                selfy = data.hash[idkeys[x]].y
+                selfy = data.hash[idkeys[x]].y;
                 $("#div"+selfx+selfy).css('background','blue');
             } else {
-                curx = data.hash[idkeys[x]].x;
-                cury = data.hash[idkeys[x]].y
-                $("#div"+curx+cury).css('background','gray');
+                var curx = data.hash[idkeys[x]].x;
+                var cury = data.hash[idkeys[x]].y;
+                if (data.hash[idkeys[x]].type == 1) {
+                    $("#div"+curx+cury).css('background','gray');
+                } else if ((data.hash[idkeys[x]].type == 0)) {
+                    $("#div"+curx+cury).css('background','red');
+                }
+            }
+            console.log('selfx: ' + selfx);
+            console.log('selfy: ' + selfy);
+            console.log('curx: ' + curx);
+            console.log('cury: ' + cury);
+            if (selfx == curx && selfy == cury) {
+                (data.hash[idkeys[x]].type == 1) ? console.log(">>> player collision <<<") : console.log("<<< monster collision >>>") 
             }
         }        
     });
