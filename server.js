@@ -9,10 +9,9 @@ var maxcoord = 9;
 var mincoord = 0;
 
 // initialize mobs
-hash[0] = {'id': 0, 'x': 1, 'y': 1, 'type': 0};
-hash[1] = {'id': 1, 'x': 1, 'y': 8, 'type': 0};
-hash[2] = {'id': 2, 'x': 8, 'y': 1, 'type': 0};
-hash[3] = {'id': 3, 'x': 8, 'y': 8, 'type': 0};
+hash[0] = {'id': 0, 'x': 1, 'y': 1, 'type': -1}; // orc
+hash[1] = {'id': 1, 'x': 1, 'y': 8, 'type': -2}; // goblin
+hash[2] = {'id': 2, 'x': 8, 'y': 1, 'type': -3}; // ogre
 
 function calcMobMove(mob) {
     dir = Math.floor(Math.random() * 4);
@@ -56,7 +55,6 @@ io.on('connection', function (socket) {
         calcMobMove(hash[0]);
         calcMobMove(hash[1]);
         calcMobMove(hash[2]);
-        calcMobMove(hash[3]);
         hash[thisid] = {'id': thisid, 'x': data.x, 'y': data.y, 'type': 1};
         io.emit('updategrid', {hash: hash });
     });

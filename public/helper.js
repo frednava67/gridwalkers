@@ -63,14 +63,24 @@ $(document).ready(function (){
             if (data.hash[idkeys[x]].id == socketid) {
                 selfx = data.hash[idkeys[x]].x;
                 selfy = data.hash[idkeys[x]].y;
-                $("#div"+selfx+selfy).css('background','blue');
+                $("#div"+selfx+selfy).css({'background':'#007bff',"background-image":"url('assets/player.png')"});
             } else {
                 var curx = data.hash[idkeys[x]].x;
                 var cury = data.hash[idkeys[x]].y;
                 if (data.hash[idkeys[x]].type == 1) {
-                    $("#div"+curx+cury).css('background','gray');
-                } else if ((data.hash[idkeys[x]].type == 0)) {
-                    $("#div"+curx+cury).css('background','red');
+                    $("#div"+curx+cury).css({'background':'gray',"background-image":"url('assets/other.png')"});
+                } else if ((data.hash[idkeys[x]].type < 0)) {
+                    switch(data.hash[idkeys[x]].type) {
+                        case -1: // orc
+                            $("#div"+curx+cury).css({'background':'red',"background-image":"url('assets/orc-head.png')"});
+                        break;
+                        case -2: // goblin
+                            $("#div"+curx+cury).css({'background':'red',"background-image":"url('assets/goblin-head.png')"});
+                        break;
+                        case -3: // ogre
+                            $("#div"+curx+cury).css({'background':'red',"background-image":"url('assets/ogre-head.png')"});
+                        break;
+                    }
                 }
             }
             console.log('selfx: ' + selfx);
